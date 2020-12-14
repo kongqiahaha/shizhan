@@ -1,0 +1,13 @@
+.thead {
+
+}
+.thead th {
+  text-align: center;
+}
+
+.book_name {
+  color: #6091ba;
+}
+[v-cloak]{
+    display: none
+}

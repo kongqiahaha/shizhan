@@ -1,0 +1,28 @@
+.thead th{
+    text-align: center;
+}
+.main{
+    margin-top: 20px;
+}
+
+.table_border{
+    margin-top: 20px;
+}
+
+#tname{
+    color: #6091ba;
+}
+.class_box{
+    margin-top: 20px;
+}
+.table_body tr td{
+    margin-bottom: 0;
+    margin-top: 0;
+}
+[v-cloak]{
+    display: none;
+}
+#Loading{
+
+    transform: translateY(300px);
+}

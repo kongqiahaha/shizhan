@@ -1,0 +1,28 @@
+
+.input_login {
+}
+
+.input_login .user {
+  margin-top: 15px;
+}
+
+.login_btn button {
+  /*display: inline-block;*/
+  margin: 0 auto;
+}
+.login_c {
+  float: left;
+}
+
+.class_box {
+  margin-top: 20px;
+}
+
+#login{
+  margin-top: 10%;
+  margin-bottom: 17%;
+}
+        [v-cloak]{
+            display: none
+        }
+

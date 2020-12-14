@@ -1,0 +1,174 @@
+<!doctype html>
+
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>图书管理系统</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+      <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/static/css/page2.css">
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    </style>
+  </head>
+  <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base" v-clock>
+    {% verbatim myblock %}
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+          <h2>图书管理系统</h2>
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+          <a href="/" class="mdl-layout__tab ">首页</a>
+          <a href="/page1" class="mdl-layout__tab " >分类</a>
+          <a href="/page2" class="mdl-layout__tab is-active">搜索</a>
+            <a href="/page3" class="mdl-layout__tab">我的</a>
+          <a href="/page4" class="mdl-layout__tab">登录</a>
+          <a href="/page5" class="mdl-layout__tab">注册</a>
+
+        </div>
+
+      </header>
+         <div class="col-md-12 main ">
+      <div class="col-md-1"></div>
+      <div class="col-md-10 input_top">
+        <div id="body">
+
+          <div class="nav-top">
+            <div class="select" style="font-weight: 700">
+              <form class="form-inline">
+
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+
+                       <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+      <i class="material-icons">search</i>
+    </label>               <div class="mdl-textfield__expandable-holder">
+                           <input type="text"  type="text" id="sample6" placeholder="请输入书名" class="mdl-textfield__input" v-model="info.b_keyword" style="margin-bottom: 4px"/>
+      <label class="mdl-textfield__label" for="sample-expandable" >Expandable Input</label>
+
+                  </div>
+
+                  </div>
+                  <span style="display:inline-block;width: 30px"></span>
+ <button
+                  type="button"
+                  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+
+                  class="restart"
+                  @click="select"
+                >
+          搜索
+      </button>
+
+
+              </form>
+            </div>
+          </div>
+ <div id="Loading" v-if="info.is_loading" class=" mdl-progress mdl-js-progress mdl-progress__indeterminate col-md-4 col-lg-offset-4"></div>
+          <div class="table-responsive score col-sm-12 table_border">
+            <table
+              class="table table-hover table table-stripe text-center table_body"
+              style="box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12); background-color: white; border: 1px solid rgba(0,0,0,.12);"
+                v-cloak
+            >
+              <thead>
+                <tr class="thead">
+                  <th width="5%">编号</th>
+                  <th>书名</th>
+                  <th>作者</th>
+                  <th>ISBN</th>
+                  <th>出版社</th>
+                  <th>图书总数</th>
+                  <th>已借出图书</th>
+                  <th>是否可借</th>
+                  <th width="%4">借阅</th>
+                </tr>
+
+                <tr />
+              </thead>
+              <tbody class="table_body" >
+                <tr v-for="(item,index) in info.b_arr">
+                  <td>{{index+1}}</td>
+                  <td id="tname">{{item.b_name}}</td>
+                  <td>{{item.b_author}}</td>
+                  <td>{{item.b_isbn}}</td>
+                  <td>{{item.b_public}}</td>
+                  <td>{{item.b_total}}</td>
+                  <td>{{item.b_lave}}</td>
+
+                  <td v-if="item.is_borrowable">可借</td>
+                    <td v-else>不可借</td>
+                  <td>
+                    <button
+                      class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                      :class="item.is_borrowable?'':'disabled'"
+                      style="padding-top: 2px; padding-bottom: 2px;width: 44px;height: 27px;line-height: 23px"
+                      @click="borrow(item.b_id,item.is_borrowable)"
+                    >
+                      借阅
+                    </button>
+                  </td>
+                </tr>
+                <tr />
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+      <main class="mdl-layout__content">
+
+
+
+
+
+      </main>
+    </div>
+    <a href="https://github.com/kongqiahaha/databasekeshe" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">查看源代码</a>
+       {% endverbatim myblock %}
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/static/js/page2.js"></script>
+  </body>
+</html>

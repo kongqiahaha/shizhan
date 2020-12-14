@@ -1,0 +1,23 @@
+.login_title {
+  color: #6091ba;
+  display: block;
+  text-align: center;
+
+
+}
+
+.login_btn button {
+  /*display: inline-block;*/
+  margin: 0 auto;
+}
+.login_c {
+  float: left;
+}
+.have {
+  float: left;
+  line-height: 34px;
+}
+
+[v-cloak]{
+    display: none;
+}

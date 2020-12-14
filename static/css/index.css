@@ -1,0 +1,33 @@
+/*.header_top{*/
+/*    background-color: #fff;*/
+/*}*/
+/*.nav_top{*/
+/*    background-color: white;*/
+/*}*/
+
+.notice_top {
+  padding: 0;
+  margin-top: 50px;
+}
+.admin,
+.time {
+  margin-right: 10px;
+}
+.main {
+  padding-top: 10px;
+}
+.border {
+  display: inline-block;
+}
+.event {
+  float: right;
+}
+.event_title {
+  font-size: 16px;
+  margin-top: 50px;
+  padding-left: 10px;
+}
+        [v-cloak]{
+            display: none
+        }
+

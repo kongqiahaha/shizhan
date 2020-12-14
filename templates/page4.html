@@ -1,0 +1,134 @@
+<!doctype html>
+
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>图书管理系统</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+      <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/static/css/iconfont.css">
+      <link rel="stylesheet" href="/static/css/page4.css">
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    </style>
+  </head>
+  <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+          <h2>图书管理系统</h2>
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+          <a href="/" class="mdl-layout__tab">首页</a>
+          <a href="/page1" class="mdl-layout__tab">分类</a>
+          <a href="/page2" class="mdl-layout__tab">搜索</a>
+            <a href="/page3" class="mdl-layout__tab">我的</a>
+          <a href="/page4" class="mdl-layout__tab is-active">登录</a>
+          <a href="/page5" class="mdl-layout__tab">注册</a>
+          <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
+
+              <span class="material-icons">
+                     search
+                </span>
+          </button>
+        </div>
+      </header>
+        <div class="col-md-12" id="login">
+      <div class="input_login col-md-10 login_box col-md-offset-1">
+        <form class="form-horizontal" method="POST">
+          {%csrf_token%}
+
+            <div class="col-md-2  col-md-offset-5 mdl-textfield mdl-js-textfield mdl-textfield--floating-label "style="padding-left:0;padding-right: 0 ">
+
+              <input
+                type="text"
+                class="mdl-textfield__input"
+                id = "account"
+                name="username"
+                v-model="login_inf.user_name"
+                style="margin-bottom: 7px"
+              />
+                 <label class="mdl-textfield__label" for="account">用户名</label>
+            </div>
+
+            <div class=" mdl-textfield mdl-js-textfield mdl-textfield--floating-label col-md-2 col-md-offset-5 " style="padding-left:0;padding-right: 0 ">
+
+              <input
+                type="password"
+                class=" mdl-textfield__input"
+                name="password"
+                id ="password"
+                style="margin-bottom: 7px"
+                v-model="login_inf.password"
+
+              >
+                <label class="mdl-textfield__label" for="password">密码</label>
+            </div>
+
+          <div class="form-group" style="margin-top: 25px">
+            <div class="col-md-2 col-md-offset-5" style="padding: 0">
+              <div class="checkbox login_c">
+                没有账号？去<a href="./page5">注册</a>
+              </div>
+              <div class="login_b" style="float: right">
+                <button type="button" @click="login" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                  登录
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+      <main class="mdl-layout__content" style="position: fixed;bottom: 0;width: 100%">
+
+
+      </main>
+    </div>
+    <a href="https://github.com/kongqiahaha/databasekeshe" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">查看源代码</a>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/static/js/page4.js"></script>
+  </body>
+</html>

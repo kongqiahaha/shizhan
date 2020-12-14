@@ -1,0 +1,14 @@
+/*body{*/
+/*    background-color: #f7f7f7;*/
+/*}*/
+.title {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.nav_main {
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+}
+.nav {
+  float: right;
+}
